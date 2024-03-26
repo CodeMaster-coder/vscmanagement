@@ -1,0 +1,116 @@
+.bigbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .linebox {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .label {
+    display: flex;
+    width: 180px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #333333;
+    margin-right: 20px;
+    text-align: justify;
+
+  }
+  
+  .label1 {
+    width: 100%;
+    text-align-last: justify;
+  }
+  
+  .label2 {
+    font-size: 10px;
+  }
+  
+  .input {
+    /* flex-basis: 40%; */
+    justify-content: top;
+    align-self: start;
+    width: 150px;
+    height: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+  }
+  .selectbox{
+    width: 180px;
+  }
+  
+  .materialnameoptions {
+    flex-direction: column;
+    width: 300px;
+    background-color: #FBFAFA;
+    z-index: 99999999;
+    text-align: center;
+    overflow: scroll;
+    border: 1px solid #BBBBBB;
+    border-radius: 20px;
+  }
+  
+  .materialname {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+  }
+  
+  .picker {
+    flex-basis: 40%;
+    width: 150px;
+    height: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .picker-content1 {
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    color: #808080;
+  }
+  
+  .picker-content {
+    font-size: 16px;
+    color: #333333;
+    text-align: center;
+    line-height: 30px;
+  }
+  
+  .checkBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 70px;
+    background-color: #39c0f8;
+    border-radius: 10px;
+    font-size: large;
+    margin-top: 20px;
+  }
+  
