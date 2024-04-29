@@ -11,7 +11,14 @@ module.exports = defineConfig({
         target: 'https://www.liuke.xyz/glue/login',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '',
+          '^/api1': '',
+        },
+      },
+      '/electrode/login': {
+        target: 'https://www.liuke.xyz/electrode/login',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api2': '',
         },
       },
     },

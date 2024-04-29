@@ -1,0 +1,36 @@
+/* pages/mainpage/mainpage.wxss */
+page {
+    height: 100vh;
+    display: flex;
+      flex-direction: column;
+      align-items: center;
+    /* justify-content: center; */
+  }
+  .queryMidPage_vscicon image{
+      height: 350rpx;
+  }
+  .queryMidPage_linebox{
+      margin-top: 100rpx;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+  }
+  .queryMidPage_bigonebox{
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+  }
+  .queryMidPage_smallicon{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    justify-content: center;
+  }
+  .queryMidPage_smallicon image{
+      width: 150rpx;
+      height: 150rpx;
+  }
+  .queryMidPage_smalltext{
+      text-align: center;
+      font-size: 13px;
+  }

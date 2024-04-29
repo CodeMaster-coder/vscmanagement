@@ -3,17 +3,12 @@ import Vue from "vue"
 import Router from 'vue-router'
 import Login from '@/components/Login.vue'
 import Helloworld from '@/components/HelloWorld.vue'
-import mainpage from '@/pages/mainpage/mainpage.vue'
-import storagepage from '@/pages/storagepage/storagepage.vue'
-import approvePage from '@/pages/approvePage/approvePage.vue'
-import giveoutRequestpage from '@/pages/giveoutRequestpage/giveoutRequestpage.vue'
 import loginPage from '@/pages/loginPage/loginPage.vue'
 import signupPage from '@/pages/signupPage/signupPage.vue'
 import waitAuthPage from '@/pages/waitAuthPage/waitAuthPage.vue'
-import supplyPage from '@/pages/supplyPage/supplyPage.vue'
-import queryMidPage from '@/pages/queryMidPage/queryMidPage.vue'
-import queryGiveoutpage from '@/pages/queryGiveoutpage/queryGiveoutpage.vue'
-import querySupplypage from '@/pages/querySupplypage/querySupplypage.vue'
+import firstEntrancePage from '@/pages/firstEntrancePage/firstEntrancePage.vue'
+import materialRouter from '@/router/material.js'
+import toolRouter from '@/router/tool.js'
 import store from '@/store'; // 导入 Vuex store
 
 // 2.全局注册路由
@@ -24,16 +19,13 @@ Vue.use(Router)
 const router = new Router({
     // mode: 'hash',
     routes:[
+        ...materialRouter,
+        ...toolRouter,
         {
-            name:'mainpage',
-            path:'/mainpage',
-            component:mainpage,
-            meta: { title: '主页', requiresAuth: true }
-        },
-        {
-            path:'/storagepage',
-            component:storagepage,
-            meta: { title: '库存', requiresAuth: true }
+            name:'firstEntrancePage',
+            path:'/firstEntrancePage',
+            component:firstEntrancePage,
+            meta: { title: '一级入口', requiresAuth: true }
         },
         {
             path: '/login',
@@ -44,18 +36,6 @@ const router = new Router({
             component:Helloworld
         },
         {
-            name:'approvePage',
-            path:'/approvePage',
-            component:approvePage,
-            meta: { title: '审批', requiresAuth: true }
-        },
-        {
-            name:'giveoutRequestpage',
-            path:'/giveoutRequestpage',
-            component:giveoutRequestpage,
-            meta: { title: '发放', requiresAuth: true }
-        },
-        {
             name:'loginPage',
             path:'/',
             component:loginPage,
@@ -64,7 +44,6 @@ const router = new Router({
         {
             name:'signupPage',
             path:'/signupPage',
-            // component: () => import ('@/pages/signupPage/signupPage.vue'),
             component:signupPage,
             meta: { title: '注册' }
         },
@@ -73,30 +52,6 @@ const router = new Router({
             path:'/waitAuthPage',
             component:waitAuthPage,
             meta: { title: '等待审批', requiresAuth: true }
-        },
-        {
-            name:'supplyPage',
-            path:'/supplyPage',
-            component:supplyPage,
-            meta: { title: '补库', requiresAuth: true }
-        },
-        {
-            name:'queryMidPage',
-            path:'/queryMidPage',
-            component:queryMidPage,
-            meta: { title: '查询中间页', requiresAuth: true }
-        },
-        {
-            name:'queryGiveoutpage',
-            path:'/queryGiveoutpage',
-            component:queryGiveoutpage,
-            meta: { title: '发放查询', requiresAuth: true }
-        },
-        {
-            name:'querySupplypage',
-            path:'/querySupplypage',
-            component:querySupplypage,
-            meta: { title: '补库查询', requiresAuth: true }
         },
 
 

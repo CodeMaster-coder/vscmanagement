@@ -75,7 +75,7 @@ if(response.data.length != 0){
       this.$router.push('/waitAuthPage');
       // console.log(1)
     } else {
-      this.$router.push('/mainpage');
+      this.$router.push('/firstEntrancePage');
       // console.log(11)
     }
 }else{

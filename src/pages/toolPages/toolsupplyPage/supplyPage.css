@@ -1,0 +1,138 @@
+.bigbox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.linebox{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.label {
+  display: flex;
+  /* flex-basis: 30%; */
+  width: 100px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #333333;
+  margin-right: 20px;
+  text-align: justify;
+  /* text-align-last: justify; */
+}
+.label1{
+  width: 100%;
+  text-align-last: justify;
+}
+.label2{
+  font-size: 10px;
+}
+.selectbox{
+  width: 180px;
+}
+
+.input {
+  /* flex-basis: 40%; */
+  justify-content: top;
+  align-self: start;
+  width: 150px;
+  height: 30px;
+  /* border: 1px solid #dddddd; */
+  /* border-radius: 5px; */
+  font-size: 16px;
+  /* padding: 5px; */
+  text-align: center;
+}
+
+.checkBtn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 40px;
+  background-color: #39c0f8;
+  /* border: 2px solid #39c0f8; */
+  border-radius: 10rpx;
+  font-size: large;
+  margin-top: 20rpx;
+}
+.bigtempbox{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+	width: 98%;
+  border: 2px solid #35c0f7;
+  border-radius: 30rpx;
+}
+
+
+.tempbox{
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 6rpx; */
+	width: 98%;
+  /* border: 2px solid #022a3a; */
+  /* border-radius: 30rpx; */
+}
+.columnbox1{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+
+}
+.columnbox2{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+
+}
+.columnbox3{
+  width: 17.5%;
+  display: flex;
+  flex-direction: column;
+
+}
+.columnbox4{
+  width: 17.5%;
+  display: flex;
+  flex-direction: column;
+
+}
+.title{
+  background-color: #c7e8f7;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+	text-align: center;
+  border-left: 3rpx solid white;
+  border-right: 3rpx solid white;
+  font-size: 13px;
+  /* margin-top: 3rpx; */
+}
+.content{
+  width: 90%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+.content4{
+  width: 90%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1.5rpx solid #717374;
+  border-radius: 10rpx;
+}

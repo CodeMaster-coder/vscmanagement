@@ -1,0 +1,116 @@
+.toolMaintainRequestPage_bigbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .toolMaintainRequestPage_linebox {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .toolMaintainRequestPage_input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .toolMaintainRequestPage_label {
+    display: flex;
+    width: 180px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #333333;
+    margin-right: 20px;
+    text-align: justify;
+
+  }
+  
+  .toolMaintainRequestPage_label1 {
+    width: 100%;
+    text-align-last: justify;
+  }
+  
+  .toolMaintainRequestPage_label2 {
+    font-size: 10px;
+  }
+  
+  .toolMaintainRequestPage_input {
+    /* flex-basis: 40%; */
+    justify-content: top;
+    align-self: start;
+    width: 150px;
+    height: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+  }
+  .toolMaintainRequestPage_selectbox{
+    width: 180px;
+  }
+  
+  .toolMaintainRequestPage_materialnameoptions {
+    flex-direction: column;
+    width: 300px;
+    background-color: #FBFAFA;
+    z-index: 99999999;
+    text-align: center;
+    overflow: scroll;
+    border: 1px solid #BBBBBB;
+    border-radius: 20px;
+  }
+  
+  .toolMaintainRequestPage_materialname {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+  }
+  
+  .toolMaintainRequestPage_picker {
+    flex-basis: 40%;
+    width: 150px;
+    height: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .toolMaintainRequestPage_picker-content1 {
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    color: #808080;
+  }
+  
+  .toolMaintainRequestPage_picker-content {
+    font-size: 16px;
+    color: #333333;
+    text-align: center;
+    line-height: 30px;
+  }
+  
+  .toolMaintainRequestPage_checkBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 70px;
+    background-color: #39c0f8;
+    border-radius: 10px;
+    font-size: large;
+    margin-top: 20px;
+  }
+  

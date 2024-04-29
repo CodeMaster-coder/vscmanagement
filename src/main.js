@@ -7,7 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import store from './store'
 
-axios.defaults.baseURL = '/'
+axios.defaults.baseURL = ''
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 Vue.prototype.$axios = axios;
