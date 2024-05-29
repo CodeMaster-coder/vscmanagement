@@ -20,23 +20,35 @@
         </div>
         <div class="bigonebox" @click="naviToGiveout">
           <div class="smallicon">
-            <img :src="require('@/assets/维修状态更新.png')" alt="Giveout Icon">
+            <img :src="require('@/assets/工具报废审批.png')" alt="Supplement Icon" @click="naviToSupply">
           </div>
           <div class="smalltext">
-            工具维修状态(tool maintain status)
+            工具报废审批(tool scrap approve)
           </div>
+
         </div>
       </div>
   
       <div class="linebox">
         <div class="bigonebox">
           <div class="smallicon">
-            <img :src="require('@/assets/工具报废审批.png')" alt="Supplement Icon" @click="naviToSupply">
+            <img :src="require('@/assets/维修审批.png')" alt="Giveout Icon" @click="naviToToolMaintainApprove">
           </div>
           <div class="smalltext">
-            工具报废审批(tool scrap approve)
+            工具维修审批(tool maintain approve)
           </div>
         </div>
+        <div class="bigonebox">
+          <div class="smallicon">
+            <img :src="require('@/assets/维修状态更新.png')" alt="Giveout Icon"  @click="naviToGiveout">
+          </div>
+          <div class="smalltext">
+            工具维修状态(tool maintain status)
+          </div>
+        </div>
+      </div>
+
+      <div class="linebox">
         <div class="bigonebox">
           <div class="smallicon">
             <img :src="require('@/assets/query.png')" alt="Query Icon" @click="naviToMidpage">
@@ -44,6 +56,9 @@
           <div class="smalltext">
             工具状态查询(tool status query)
           </div>
+        </div>
+        <div class="bigonebox">
+
         </div>
       </div>
     </div>
@@ -83,7 +98,10 @@ export default {
       // 处理点击查询图标的逻辑
       this.$router.push('/tool/toolStatusQueryMidpage')
     },
- 
+    naviToToolMaintainApprove()
+    {
+      this.$router.push('/tool/toolMaintainApprove')
+    } 
   },
 
   

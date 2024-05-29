@@ -24,6 +24,23 @@
               <div class="title">单位</div>
             </div>
           </div>
+          <div class="tempbox">
+            <div class="columnbox1">
+              <div class="title">Name</div>
+            </div>
+            <div class="columnbox2">
+              <div class="title">Type</div>
+            </div>
+            <div class="columnbox3">
+              <div class="title">Num</div>
+            </div>
+            <div class="columnbox5">
+              <div class="title">Username</div>
+            </div>
+            <div class="columnbox4">
+              <div class="title">Unit</div>
+            </div>
+          </div>
   
           <div class="tempbox" v-for="(item, index) in allRequestData" :key="index">
             <!-- <div class="contentlinebox" :key="index" :data-index="index" :data-id="item.id" @touchstart="touchStart" @touchend="touchEnd($event, index)"> -->
@@ -38,18 +55,18 @@
                 <div class="content">{{ item.giveoutNum }}</div>
               </div>
               <div class="columnbox5">
-                <div class="content" :data-index="index">{{ item.userName }}</div>
+                <div class="content" :data-index="index">{{ item.giveoutPcs}}</div>
               </div>
               <div class="columnbox4">
-                <div class="content" :data-index="index" @click.stop="touchEnd($event, index)">{{ item.giveoutPcs }}</div>
+                <div class="content" :data-index="index" @click.stop="touchEnd($event, index)">{{ item.giveoutTime }}</div>
               </div>
   
               <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="delDialogVisible = true">
-                <div class="content">删除</div>
+                <div class="content">删除(delete)</div>
               </div>
   
               <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="approveDialogVisible = true">
-                <div class="content">批准</div>
+                <div class="content">批准(approve)</div>
               </div>
             </div>
           </div>
@@ -59,10 +76,10 @@
         :visible.sync="delDialogVisible"
         width="30%"
         :before-close="handleClose">
-        <span>确定删除领用请求数据？</span>
+        <span>确定删除领用请求数据？(Confirm delete apply data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="delDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="delRequestData">确 定</el-button>
+          <el-button @click="delDialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="delRequestData">确 定(confirm)</el-button>
         </span>
       </el-dialog>
       <el-dialog
@@ -70,10 +87,10 @@
         :visible.sync="approveDialogVisible"
         width="30%"
         :before-close="handleClose">
-        <span>确定批准领用请求数据？</span>
+        <span>确定批准领用请求数据？(Confirm apply data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="approveDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="approveRequestData">确 定</el-button>
+          <el-button @click="approveDialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="approveRequestData">确 定(confirm)</el-button>
         </span>
       </el-dialog>
       </div>
@@ -112,12 +129,12 @@
       // 如果需要设置其他数据，可以像上面一样直接修改
       // this.touchey = event.changedTouches[0].clientY;
       // if (this.touchsx - this.touchex >= 50) {
-        if (store.getters.auth > 1) {
+        if (store.getters.auth > 1 & store.getters.department == 'EVK') {
           this.currentItem = index;
           this.index = index
         } else {
           // 如果没有权限，可以通过某种方式给出提示
-          this.$message.error('你没有权限！');
+          this.$message.error('你没有权限！(You do not have permission!)');
         }
       // }
       console.log(this.currentItem)
@@ -140,10 +157,10 @@
                      response => {
                          console.log(response.data);
                          if(response.data.status){
-                          this.$message('数据删除成功！')
+                          this.$message.success('数据删除成功！(Delete data successfully!)')
                           this.reload()
                          }else{
-                           this.$message('数据删除失败！')
+                           this.$message.error('数据删除失败！(Delete data failed, please try again!)')
                          }
                      }
                  ).catch(
@@ -163,9 +180,10 @@
                          materialName:that.allRequestData[that.index].materialName,
                          materialModel:that.allRequestData[that.index].materialModel,
                          giveoutNum:that.allRequestData[that.index].giveoutNum,
-                         userName:that.allRequestData[that.index].userName,
+                         userName:that.allRequestData[that.index].giveoutPcs,
                          editName:store.getters.username,
-                         giveoutPcs:that.allRequestData[that.index].giveoutPcs,
+                         giveoutPcs:that.allRequestData[that.index].giveoutTime
+,
                          giveoutTime:Math.floor(Date.now() / 1000)
 
                      },
@@ -197,10 +215,10 @@
                                             console.log(error)
                                         }
                                     )
-                          this.$message('领用数据提交成功！')
+                          this.$message.success('领用数据提交成功！(Data submit successfully!)')
                           
                          }else{
-                           this.$message('领用数据提交失败！')
+                           this.$message.error('领用数据提交失败！(Data submit failed, please try again!)')
                          }
                      }
                  ).catch(
@@ -210,7 +228,7 @@
                  )
       }),
       handleClose(done) {
-        this.$confirm('确认关闭？')
+        this.$confirm('确认关闭？(Confirm closed?)')
           .then(_ => {
             done();
           })
@@ -232,7 +250,7 @@
                          if(response.data){
                            this.allRequestData = response.data
                          }else{
-                           this.$message('数据获取失败，请重试！')
+                           this.$message.success('数据获取失败，请重试！(Data acquisition failed, please try again!)')
                          }
                      }
                  ).catch(

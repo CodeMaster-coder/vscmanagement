@@ -1,17 +1,20 @@
-.toolMaintainHistory_bigbox{
+.wholePage{
+	height: 999999999px;
+}
+.toolMaintainStatusUpdate_bigbox{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .toolMaintainHistory_linebox{
+  .toolMaintainStatusUpdate_linebox{
     display: flex;
     width: 100%;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
   }
-  .toolMaintainHistory_input-group {
+  .toolMaintainStatusUpdate_input-group {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,7 +22,7 @@
     margin-bottom: 3px;
     width: 100%;
   }
-  .toolMaintainHistory_label {
+  .toolMaintainStatusUpdate_label {
     display: flex;
     /* flex-basis: 30%; */
     width: 150px;
@@ -32,15 +35,15 @@
     text-align: justify;
     /* text-align-last: justify; */
   }
-  .toolMaintainHistory_label1{
+  .toolMaintainStatusUpdate_label1{
     width: 100%;
     text-align-last: justify;
   }
-  .toolMaintainHistory_label2{
+  .toolMaintainStatusUpdate_label2{
     font-size: 10px;
   }
   
-  .toolMaintainHistory_input {
+  .toolMaintainStatusUpdate_input {
     flex-basis: 40%;
     justify-content: top;
     align-self: start;
@@ -52,7 +55,7 @@
     padding: 5px;
     text-align: center;
   }
-  .toolMaintainHistory_materialnameoptions{
+  .toolMaintainStatusUpdate_materialnameoptions{
     /* display: flex;  */
     /* position: absolute; */
     /* height: 480rpx; */
@@ -68,17 +71,17 @@
     border-radius: 20rpx;
     /* white-space:nowrap; */
   }
-  .toolMaintainHistory_materialname{
+  .toolMaintainStatusUpdate_materialname{
     width: 100%;
     height: 40rpx;
       line-height: 40rpx;
       font-size: 13px;
   }
-  .toolMaintainHistory{
+  .toolMaintainStatusUpdate{
     width: 150px;
   }
   
-  .toolMaintainHistory_picker {
+  .toolMaintainStatusUpdate_picker {
     flex-basis: 40%;
     width: 130px;
       height: 20px;
@@ -88,7 +91,7 @@
     font-size: 13px;
     padding: 5px;
   }
-  .toolMaintainHistory_picker-content1 {
+  .toolMaintainStatusUpdate_picker-content1 {
      font-size: 13px;
     
     text-align: center;
@@ -96,13 +99,13 @@
     color: #808080;
   }
   
-  .toolMaintainHistory_picker-content {
+  .toolMaintainStatusUpdate_picker-content {
     font-size: 13px;
     color: #333333;
     text-align: center;
     line-height: 20px;
   }
-  .toolMaintainHistory_checkBtn{
+  .toolMaintainStatusUpdate_checkBtn{
     display: flex;
     width: 150px;
     height: 40px;
@@ -114,10 +117,10 @@
     cursor: pointer;
     justify-content: center;
   }
-  .toolMaintainHistory_bigtempbox{
+  .toolMaintainStatusUpdate_bigtempbox{
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    /* margin-top: 10px; */
       width: 100%;
       font-size: 11px;
     /* border: 2px solid #dce9ee; */
@@ -125,7 +128,17 @@
   }
   
   
-  .toolMaintainHistory_tempbox{
+  .toolMaintainStatusUpdate_tempbox1{
+    display: flex;
+    flex-direction: row;
+    /* margin-top: 6rpx; */
+      width: 100%;
+    /* border: 2px solid #dce9ee; */
+    /* border-radius: 30rpx; */
+    background-color: #3498db;
+    color: #fff;
+  }
+  .toolMaintainStatusUpdate_tempbox2{
     display: flex;
     flex-direction: row;
     /* margin-top: 6rpx; */
@@ -133,94 +146,143 @@
     /* border: 2px solid #dce9ee; */
     /* border-radius: 30rpx; */
   }
-  .toolMaintainHistory_endErrorContainer{
+  .toolMaintainStatusUpdate_endErrorContainer{
       display: flex;
     flex-direction: row;
     /* margin-top: 6rpx; */
       width: 100%;
+      border-bottom: 1px solid #ceedfc;
   }
-  .toolMaintainHistory_columnbox1{
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-  
-  }
-  .toolMaintainHistory_columnbox2{
-    width: 14%;
-    display: flex;
-    flex-direction: column;
-  
-  }
-  .toolMaintainHistory_columnbox3{
-    width: 8%;
-    display: flex;
-    flex-direction: column;
-  
-  }
-  .toolMaintainHistory_columnbox4{
-    width: 8%;
-    display: flex;
-    flex-direction: column;
-  
-  }
-  .toolMaintainHistory_columnbox5{
-    width: 12%;
-    display: flex;
-    flex-direction: column;
-  
-  }
-  .toolMaintainHistory_columnbox6{
+  .toolMaintainStatusUpdate_columnbox1{
     width: 10%;
     display: flex;
     flex-direction: column;
-  
+    border-right: 1px solid #fafbfc;
   }
-  .toolMaintainHistory_columnbox7{
-    width: 10%;
+  .toolMaintainStatusUpdate_columnbox2{
+    width: 7%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox3{
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox4{
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox5{
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox6{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox7{
+    width: 6%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox8{
+    width: 6%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox9{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox10{
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox11{
+    width: 6%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #fafbfc;
+  }
+  .toolMaintainStatusUpdate_columnbox12{
+    width: 5%;
     display: flex;
     flex-direction: column;
   
   }
-  .toolMaintainHistory_columnbox8{
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-  }
-  .toolMaintainHistory_title{
-    background-color: #c7e8f7;
+
+  .toolMaintainStatusUpdate_title{
+    
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: auto;
       text-align: center;
+      overflow-wrap: break-word;
+      align-items: center;
     /* border-left: 1rpx solid white; */
     /* border-right: 1rpx solid white; */
-    /* margin-top: 3rpx; */
+
   }
-  .toolMaintainHistory_content{
+  .toolMaintainStatusUpdate_content{
     width: 100%;
-    height: 30px;
+    height: auto;
     overflow-wrap: break-word; 
     /* line-height: 50rpx; */
     align-items: center;
       text-align: center;
-      border-bottom: 1rpx solid #c7e8f7;
+ 
   }
-  .toolMaintainHistory_delBtn{
-      display: flex;
-      /* align-items: center; */
-      justify-content: center;
-      /* height: 130rpx;
-      line-height: 130rpx; */
-      margin: 10rpx;
-      /* padding: 10rpx; */
-      width: 90rpx;
-      /* margin-right: 5rpx;
-      margin-left: 10rpx; */
-      border: 2rpx solid rgba(187, 187, 187, 100);
-      border-radius: 20rpx;
-      /* margin-top: 14rpx; */
-      background-color:  	 	#F5F5F5;
-      align-items: center;
+  .toolMaintainStatusUpdate_content1{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow-wrap: break-word; 
+    /* line-height: 50rpx; */
+    align-items: center;
+      text-align: center;
+    background-color: red;
+  }
+  .toolMaintainStatusUpdate_content2{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow-wrap: break-word; 
+    /* line-height: 50rpx; */
+    align-items: center;
+      text-align: center;
+    background-color: yellow;
+  }
+  .toolMaintainStatusUpdate_content3{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow-wrap: break-word; 
+    /* line-height: 50rpx; */
+    align-items: center;
+      text-align: center;
+    background-color: green;
+  }
+  .toolMaintainStatusUpdate_delBtn{
+  	width: 5%;
+  display: flex;
+	flex-direction: column;
+	background-color: #c2e6f7;
+	margin-left: 3px;
+	margin-right: 3px;
       }
       .delBtn1{
       display: none;

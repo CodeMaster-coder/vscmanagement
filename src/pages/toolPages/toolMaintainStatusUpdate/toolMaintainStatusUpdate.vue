@@ -1,116 +1,129 @@
 <template>
   <div class="wholePage" @click="resetCurrentIndex">
-    <div class="queryGiveoutpage_bigbox">
-      <div class="queryGiveoutpage_linebox">
-        <div class="queryGiveoutpage_input-group">
-          <div class="queryGiveoutpage_label">
-            <div class="queryGiveoutpage_label1">工具名称</div>
-            <div class="queryGiveoutpage_label2">(Tool name)</div>
-          </div>
-          <div>
-            <el-select class = 'queryGiveoutpage_selectbox'  
-            v-model="chosenName" 
-            @change = "materialNameChange" 
-            filterable clearable placeholder="Please enter name!">
-                <el-option v-for="item in materialnamelist"   :value="item">
-                </el-option>
-            </el-select>
-          </div>
-        </div>
-      </div>
 
-      <div class="queryGiveoutpage_linebox">
-        <div class="queryGiveoutpage_input-group">
-          <div class="queryGiveoutpage_label">
-            <div class="queryGiveoutpage_label1">领用人</div>
-            <div class="queryGiveoutpage_label2">(User)</div>
+    <div class="toolMaintainStatusUpdate_bigbox">
+      <div class="toolMaintainStatusUpdate_bigtempbox">
+        <div class="toolMaintainStatusUpdate_tempbox1">
+          <div class="toolMaintainStatusUpdate_columnbox1">
+            <div class="toolMaintainStatusUpdate_title">工具名称</div>
+            <div class="toolMaintainStatusUpdate_title">toolName</div>
           </div>
-          <div >
-              <el-select class = 'queryGiveoutpage_selectbox' 
-              v-model="userName" 
-              @change = "userNameChange" 
-              filterable clearable
-              placeholder="Please select name!">
-                  <el-option
-                      v-for="item in allusername"
-                          :value="item">
-                  </el-option>
-              </el-select>
-          </div>
-        </div>
-      </div>
+          <div class="toolMaintainStatusUpdate_columnbox2">
+            <div class="toolMaintainStatusUpdate_title">工具型号</div>
+            <div class="toolMaintainStatusUpdate_title">type</div>
 
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox3">
+            <div class="toolMaintainStatusUpdate_title">维修数量</div>
+            <div class="toolMaintainStatusUpdate_title">maintainNum</div>
 
-      <div class="queryGiveoutpage_checkBtn" @click="queryBtn">查询(Query)</div>
-    </div>
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox4">
+            <div class="toolMaintainStatusUpdate_title">申请维修人</div>
+            <div class="toolMaintainStatusUpdate_title">applyName</div>
 
-    <div class="queryGiveoutpage_bigbox">
-      <div class="queryGiveoutpage_bigtempbox">
-        <div class="queryGiveoutpage_tempbox">
-          <div class="queryGiveoutpage_columnbox1">
-            <div class="queryGiveoutpage_title">工具名称</div>
           </div>
-          <div class="queryGiveoutpage_columnbox2">
-            <div class="queryGiveoutpage_title">工具型号</div>
-          </div>
-          <div class="queryGiveoutpage_columnbox3">
-            <div class="queryGiveoutpage_title">维修数量</div>
-          </div>
-          <div class="queryGiveoutpage_columnbox4">
-            <div class="queryGiveoutpage_title">单位</div>
-          </div>
-          <div class="queryGiveoutpage_columnbox5">
-            <div class="queryGiveoutpage_title">申请维修人</div>
-          </div>
-          <div class="queryGiveoutpage_columnbox6">
-            <div class="queryGiveoutpage_title">申请维修时间</div>
-          </div>
-        </div>
+          <div class="toolMaintainStatusUpdate_columnbox5">
+            <div class="toolMaintainStatusUpdate_title">所属区域</div>
+            <div class="toolMaintainStatusUpdate_title">area</div>
 
-        <div class="queryGiveoutpage_tempbox" v-for="(item, index) in queryGiveoutArr" :key="index">
-          <div class="queryGiveoutpage_endErrorContainer" :data-index="index">
-            <div class="queryGiveoutpage_columnbox1">
-              <div class="queryGiveoutpage_content">{{item.toolName}}</div>
-            </div>
-            <div class="queryGiveoutpage_columnbox2">
-              <div class="queryGiveoutpage_content">{{item.toolModel}}</div>
-            </div>
-            <div class="queryGiveoutpage_columnbox3">
-              <div class="queryGiveoutpage_content">{{item.maintainNum}}</div>
-            </div>
-            <div class="queryGiveoutpage_columnbox4">
-              <div class="queryGiveoutpage_content">{{item.toolPcs}}</div>
-            </div>
-            <div class="queryGiveoutpage_columnbox5">
-              <div class="queryGiveoutpage_content">{{item.userName}}</div>
-            </div>
-            <div class="queryGiveoutpage_columnbox6">
-              <div class="queryGiveoutpage_content" :data-index="index" @click.stop="touchEnd($event, index)">{{item.startTime}}</div>
-            </div>
-            <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="delDialogVisible = true">
-              <div class="queryGiveoutpage_content">删除</div>
-            </div>
-  
-            <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="naviToConfirmPage(index)">
-              <div class="queryGiveoutpage_content">更新</div>
-            </div>
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox6">
+            <div class="toolMaintainStatusUpdate_title">问题描述</div>
+            <div class="toolMaintainStatusUpdate_title">problemDetail</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox13">
+            <div class="toolMaintainStatusUpdate_title">备注</div>
+            <div class="toolMaintainStatusUpdate_title">comment</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox7">
+            <div class="toolMaintainStatusUpdate_title">申请维修时间</div>
+            <div class="toolMaintainStatusUpdate_title">applyTime</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox8">
+            <div class="toolMaintainStatusUpdate_title">批准维修时间</div>
+            <div class="toolMaintainStatusUpdate_title">approveTime</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox9">
+            <div class="toolMaintainStatusUpdate_title">解决措施</div>
+            <div class="toolMaintainStatusUpdate_title">solution</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox10">
+            <div class="toolMaintainStatusUpdate_title">更换备件</div>
+            <div class="toolMaintainStatusUpdate_title">partChange</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox11">
+            <div class="toolMaintainStatusUpdate_title">截止日期</div>
+            <div class="toolMaintainStatusUpdate_title">deadlineDate</div>
+
+          </div>
+          <div class="toolMaintainStatusUpdate_columnbox12">
+            <div class="toolMaintainStatusUpdate_title">状态</div>
+            <div class="toolMaintainStatusUpdate_title">status</div>
 
           </div>
         </div>
-        <el-dialog
-        title="提示"
-        :visible.sync="delDialogVisible"
-        width="30%"
-        :before-close="handleClose">
-        <span>确定删除维修请求数据？</span>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="delDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="delRequestData">确 定</el-button>
-        </span>
-      </el-dialog>
+
+        <div class="toolMaintainStatusUpdate_tempbox2" v-for="(item, index) in queryGiveoutArr" :key="index">
+          <div class="toolMaintainStatusUpdate_endErrorContainer" :data-index="index">
+            <div class="toolMaintainStatusUpdate_columnbox1">
+              <div class="toolMaintainStatusUpdate_content">{{item.toolName}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox2">
+              <div class="toolMaintainStatusUpdate_content">{{item.toolModel}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox3">
+              <div class="toolMaintainStatusUpdate_content">{{item.maintainNum}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox4">
+              <div class="toolMaintainStatusUpdate_content">{{item.userName}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox5">
+              <div class="toolMaintainStatusUpdate_content">{{item.workingArea}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox6">
+              <div class="toolMaintainStatusUpdate_content">{{item.problemDetail}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox13">
+              <div class="toolMaintainStatusUpdate_content">{{item.EVKmaintainComment}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox7">
+              <div class="toolMaintainStatusUpdate_content">{{item.startTime}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox8">
+              <div class="toolMaintainStatusUpdate_content">{{item.approveTime}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox9">
+              <div class="toolMaintainStatusUpdate_content">{{item.solution}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox10">
+              <div class="toolMaintainStatusUpdate_content">{{Boolean(item.partChange)}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox11">
+              <div class="toolMaintainStatusUpdate_content">{{item.deadlineDate}}</div>
+            </div>
+            <div class="toolMaintainStatusUpdate_columnbox12">
+              <div :class="item.status===1?'toolMaintainStatusUpdate_content1' : item.status===2?'toolMaintainStatusUpdate_content2' : 'toolMaintainStatusUpdate_content3'" :data-index="index" @click.stop="touchEnd($event, index)">
+                {{item.status}}
+              </div>
+            </div>  
+            <div class="toolMaintainStatusUpdate_delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="naviToConfirmPage(index)">
+              <div class="toolMaintainStatusUpdate_content">更新(update)</div>
+            </div>
+
+          </div>
+        </div>
         
       </div>
+      <button class="checkBtn" @click="toolMaintainExportBtn">导出(export)</button>
     </div>
+    
   </div>
 </template>
 
@@ -118,6 +131,7 @@
 import store from '@/store'; // 导入 Vuex store
 //引入防抖文件
 import { antiShake } from '@/utils.js/utils_antishake.js';  
+import XLSX from "xlsx/dist/xlsx.full.min.js"
 export default {
   data(){
     return{
@@ -129,7 +143,8 @@ export default {
       queryGiveoutArr:[],
       delDialogVisible:false,
       value1:'',
-      currentItem:null
+      currentItem:null,
+      allData:[]
     }
     
   },
@@ -155,12 +170,12 @@ export default {
       // 如果需要设置其他数据，可以像上面一样直接修改
       // this.touchey = event.changedTouches[0].clientY;
       // if (this.touchsx - this.touchex >= 50) {
-        if (store.getters.auth > 1) {
+        if (store.getters.auth > 1 & store.getters.department == 'EZ') {
           this.currentItem = index;
           this.index = index
         } else {
           // 如果没有权限，可以通过某种方式给出提示
-          this.$message.error('你没有权限！');
+          this.$message.error('你没有权限！(You do not have permission!)');
         }
       // }
       console.log(this.currentItem)
@@ -210,26 +225,12 @@ export default {
         .catch(_ => {});
   },
 
-  querymaterialnamelist(){
-      //查询所有物料名称
-      this.$axios.post('/electrode/login/',{demo:'toolName'},{
-          headers: {
-          'Content-Type': 'application/json',
-          },
-              }).then(response => {
-                  // console.log(response.data);
-                  this.materialnamelist = response.data
-                  // console.log(this.materialnamelist);
-                  })
-              .catch(error => {
-                console.error('Error fetching material names:', error);
-                      });
-  },
+
 
   naviToConfirmPage(index) {
       console.log(index)
       this.$router.push({
-        name:'toolMaintainStatusConfirm',
+        name:'toolMaintainStatusUpdateDetail',
         params:{
             RequestData:this.queryGiveoutArr[index]
         }
@@ -237,26 +238,11 @@ export default {
       console.log(this.queryGiveoutArr[index])
     },
   
-  queryusernamelist(){
-    this.$axios.post('/electrode/login/',{demo:'toolUserName'},{
-        headers: {
-        'Content-Type': 'application/json',
-        },
-            }).then(response => {
-                console.log(response.data);
-                this.allusername = response.data
-                // console.log(this.materialnamelist);
-                })
-            .catch(error => {
-              console.error('Error fetching material names:', error);
-                    });
-  },
 
-  queryGiveout(materialName,userName){
+
+  queryGiveout(){
     this.$axios.post('/electrode/login/',
-        {demo:'queryToolNeedMaintain',
-        toolName:materialName,
-        userName:userName,
+        {demo:'queryToolMaintainApproved',
         },
         {
         headers: {
@@ -275,12 +261,59 @@ export default {
             .catch(error => {
               console.error('Error fetching material names:', error);
                     });
+  },
+  toolMaintainExportBtn(){
+    this.$axios.post('/electrode/login/',
+        {demo:'queryToolMaintainAllData',
+        },
+        {
+        headers: {
+        'Content-Type': 'application/json',
+        },
+            }).then(response => {
+              if(response.data.length > 0){
+                console.log(response.data)
+                this.allData = response.data
+                  // 创建一个工作簿对象
+    const workbook = XLSX.utils.book_new();
+
+// 将JSON数据转换为工作表数据
+const worksheetData = response.data.map(obj => [obj.id,	obj.toolName
+,	obj.toolModel,	obj.toolPcs,	obj.maintainNum,	obj.problemDetail,	obj.workingArea,	
+  obj.userName,	obj.startTime,	obj.startTimeStamp,	obj.endTime,	obj.endTimeStamp,	
+  obj.maintainName,	obj.approveTime,	obj.approveTimeStamp,	obj.approveName,	
+obj.solution,	Boolean(obj.partChange),	obj.deadlineDate,	obj.deadlineDateStamp,	
+obj.status,	Boolean(obj.repairFinish),	obj.EVKConfirmName,	obj.EVKConfirmTime,
+obj.EVKConfirmTimeStamp,	obj.personalConfirmName,	
+obj.personalConfirmTime,	obj.personalConfirmTimeStamp, obj.EVKmaintainComment]);
+
+// 创建工作表
+const worksheet = XLSX.utils.aoa_to_sheet([["id", "toolName", "toolModel", "toolPcs", "maintainNum", "problemDetail", "workingArea",
+                "userName", "startTime", "startTimeStamp", "endTime", "endTimeStamp", "maintainName",
+                "approveTime", "approveTimeStamp", "approveName", "solution", "partChange",
+                "deadlineDate", "deadlineDateStamp", "status", "repairFinish", "EVKConfirmName",
+                "EVKConfirmTime", "EVKConfirmTimeStamp", "personalConfirmName", "personalConfirmTime",
+                "personalConfirmTimeStamp", "EVKmaintainComment"], ...worksheetData]);
+
+// 将工作表添加到工作簿中
+XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+// 导出Excel文件
+XLSX.writeFile(workbook, "allMaintainData.xlsx");
+              }else{
+                this.$message.error('无数据！')
+                this.queryGiveoutArr = response.data
+              }
+                
+                })
+            .catch(error => {
+              console.error('Error fetching material names:', error);
+                    });
+  
   }
   },
   mounted() {
-  this.querymaterialnamelist()
-  this.queryusernamelist()
-  this.queryGiveout(null,null)
+  this.queryGiveout()
   }
 };
 </script>

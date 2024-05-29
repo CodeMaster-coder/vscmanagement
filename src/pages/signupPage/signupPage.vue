@@ -12,23 +12,31 @@
       <!-- 密码输入行 -->
       <div class="input-row">
         <div class="label">
-          <div class="label1">密码</div>
-          <div class="label2">(Password):</div>
+          <div class="label1">旧密码</div>
+          <div class="label2">(Old password):</div>
         </div>
-        <input v-model="password" type="password" placeholder="请输入密码" class="input-box">
+        <input v-model="password" type="password" placeholder="请输入旧密码" class="input-box">
       </div>
   
       <!-- 确认密码输入行 -->
       <div class="input-row">
         <div class="label">
-          <div class="label1">确认密码</div>
-          <div class="label2">(Confirm):</div>
+          <div class="label1">新密码</div>
+          <div class="label2">(New passwpord):</div>
         </div>
-        <input v-model="confirmPassword" type="password" placeholder="请确认密码" class="input-box">
+        <input v-model="newPassword" type="password" placeholder="请确认密码" class="input-box">
+      </div>
+
+      <div class="input-row">
+        <div class="label">
+          <div class="label1">确认新密码</div>
+          <div class="label2">(Confirm new passwpord):</div>
+        </div>
+        <input v-model="confirmNewPassword" type="password" placeholder="请确认新密码" class="input-box">
       </div>
   
       <!-- 注册按钮 -->
-      <button @click="register" class="register-button">注册</button>
+      <button @click="register" class="register-button">重设密码(Password reset)</button>
     </div>
   </template>
   
@@ -36,22 +44,25 @@
   export default {
     data() {
       return {
-        username: '',
-        password: '',
-        confirmPassword: ''
+        username: null,
+        password: null,
+        newPassword:null,
+        confirmNewPassword: null
       };
     },
     methods: {
       register() {
-        if(this.password != this.confirmPassword){
-          this.$message('两次密码输入不一致，请重新输入！')
+        if(this.newPassword != this.confirmNewPassword){
+          this.$message.error('新密码两次输入不一致，请重新输入(The new password entered twice does not match. Please re-enter it)！')
         }else{
           this.$axios.post(
               '/glue/login/',
               {
-                  demo:'registerInfo',
+                  demo:'resetPassword',
                   username: this.username,
-                  password: this.password
+                  password: this.password,
+                  newPassword:this.newPassword,
+                  confirmNewPassword: this.confirmNewPassword
               },
               {headers:{
                   'Content-Type': 'application/json',
@@ -59,13 +70,17 @@
           ).then(
               response => {
                   console.log(response.data);
-                  if(response.data.status){
+                  if(response.data.status == 'OK'){
                     this.username = null
                     this.password = null
-                    this.confirmPassword = null
-                    this.$router.push('/waitAuthPage')
-                  }else{
-                    this.$message('注册失败，请重试！')
+                    this.newPassword = null
+                    this.confirmNewPassword = null
+                    this.$message.success('密码重设成功，请返回登陆！(Password reset successful, please return to login!)')
+                  }else if(response.data.status == 'wrong'){
+                    this.$message.error('旧的用户名或密码输入错误，请重试！(Old username or password entered incorrectly, please try again)')
+                  }
+                  else{
+                    this.$message.error('密码重设失败，请重试！(Password reset failed, please try again!)')
                   }
               }
           ).catch(

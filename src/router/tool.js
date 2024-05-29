@@ -18,6 +18,8 @@ import toolScrapRequest from '@/pages/toolPages/toolScrapRequest/toolScrapReques
 import toolStatusQueryMidpage from '@/pages/toolPages/toolStatusQueryMidpage/toolStatusQueryMidpage.vue'
 import toolMaintainHistory from '@/pages/toolPages/toolMaintainHistory/toolMaintainHistory.vue'
 import toolScrapHistory from '@/pages/toolPages/toolScrapHistory/toolScrapHistory.vue'
+import toolMaintainApprove from '@/pages/toolPages/toolMaintainApprove/toolMaintainApprove.vue'
+import toolMaintainStatusUpdateDetail from '@/pages/toolPages/toolMaintainStatusUpdateDetail/toolMaintainStatusUpdateDetail.vue'
 
 // 3.配置路由规则
 const router = [
@@ -133,6 +135,18 @@ const router = [
         path:'/tool/toolScrapHistory',
         component:toolScrapHistory,
         meta: { title: '工具报废历史页', requiresAuth: true }
+    },
+    {
+        name:'toolMaintainApprove',
+        path:'/tool/toolMaintainApprove',
+        component:toolMaintainApprove,
+        meta: { title: '工具维修审批页', requiresAuth: true }
+    },
+    {
+        name:'toolMaintainStatusUpdateDetail',
+        path:'/tool/toolMaintainStatusUpdateDetail',
+        component:toolMaintainStatusUpdateDetail,
+        meta: { title: '工具维修状态更新页', requiresAuth: true }
     },
 ]
 

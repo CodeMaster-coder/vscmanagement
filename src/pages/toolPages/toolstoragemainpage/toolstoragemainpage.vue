@@ -56,7 +56,7 @@ export default {
 
   beforeRouteLeave(to,from,next){
         if(to.name == 'toolsupplyPage'){
-          if(store.getters.auth > 1){
+          if(store.getters.auth > 1 & store.getters.department == 'EVK'){
             next()
           }else{
             this.$message.error('你没有权限！')
@@ -105,7 +105,7 @@ page {
 .image-container {
   position: relative;
   width: 100%;
-  height: 350rpx;
+  height: 200rpx;
   /* border-bottom: 1rpx solid #1296da; */
 }
 

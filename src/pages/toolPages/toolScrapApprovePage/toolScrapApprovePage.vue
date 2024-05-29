@@ -15,6 +15,12 @@
             <div class="toolScrapApprovePage_columnbox4">
               <div class="toolScrapApprovePage_title">单位</div>
             </div>
+            <div class="toolScrapApprovePage_columnbox8">
+              <div class="toolScrapApprovePage_title">所属区域</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox9">
+              <div class="toolScrapApprovePage_title">问题详情</div>
+            </div>
             <div class="toolScrapApprovePage_columnbox5">
               <div class="toolScrapApprovePage_title">报废申请人</div>
             </div>
@@ -25,6 +31,36 @@
               <div class="toolScrapApprovePage_title">工具归属人</div>
             </div>
           </div>
+          <div class="toolScrapApprovePage_tempbox">
+            <div class="toolScrapApprovePage_columnbox1">
+              <div class="toolScrapApprovePage_title">toolName</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox2">
+              <div class="toolScrapApprovePage_title">type</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox3">
+              <div class="toolScrapApprovePage_title">scrap num</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox4">
+              <div class="toolScrapApprovePage_title">unit</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox8">
+              <div class="toolScrapApprovePage_title">area</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox9">
+              <div class="toolScrapApprovePage_title">problem detail</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox5">
+              <div class="toolScrapApprovePage_title">scrap apply name</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox6">
+              <div class="toolScrapApprovePage_title">scrap apply time</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox7">
+              <div class="toolScrapApprovePage_title">user name</div>
+            </div>
+          </div>
+          
   
           <div class="toolScrapApprovePage_tempbox" v-for="(item, index) in queryGiveoutArr" :key="index">
             <div class="toolScrapApprovePage_endErrorContainer" :data-index="index">
@@ -40,6 +76,12 @@
               <div class="toolScrapApprovePage_columnbox4">
                 <div class="toolScrapApprovePage_content">{{item.toolPcs}}</div>
               </div>
+              <div class="toolScrapApprovePage_columnbox8">
+              <div class="toolScrapApprovePage_content">{{item.workingArea}}</div>
+            </div>
+            <div class="toolScrapApprovePage_columnbox9">
+              <div class="toolScrapApprovePage_content">{{item.problemDetail}}</div>
+            </div>
               <div class="toolScrapApprovePage_columnbox5">
                 <div class="toolScrapApprovePage_content">{{item.scrapRequestName}}</div>
               </div>
@@ -50,11 +92,11 @@
                 <div class="toolScrapApprovePage_content">{{item.toolUserName}}</div>
               </div>
               <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="delDialogVisible = true">
-                <div class="toolScrapApprovePage_content">删除</div>
+                <div class="toolScrapApprovePage_content">删除(delete)</div>
               </div>
   
               <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="approveDialogVisible = true">
-                <div class="toolScrapApprovePage_content">批准</div>
+                <div class="toolScrapApprovePage_content">批准(approve)</div>
               </div>
   
             </div>
@@ -64,10 +106,10 @@
         :visible.sync="delDialogVisible"
         width="30%"
         :before-close="handleClose">
-        <span>确定删除报废请求数据？</span>
+        <span>确定删除报废请求数据？(Confirm delete scrap apply data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="delDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="delRequestData">确 定</el-button>
+          <el-button @click="delDialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="delRequestData">确 定(confirm)</el-button>
         </span>
       </el-dialog>
 
@@ -76,10 +118,10 @@
         :visible.sync="approveDialogVisible"
         width="30%"
         :before-close="handleClose">
-        <span>确定批准报废请求数据？</span>
+        <span>确定批准报废请求数据？(Confirm approve scrap apply data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="approveDialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="approveRequestData">确 定</el-button>
+          <el-button @click="approveDialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="approveRequestData">确 定(confirm)</el-button>
         </span>
       </el-dialog>
           
@@ -130,7 +172,7 @@
       // 如果需要设置其他数据，可以像上面一样直接修改
       // this.touchey = event.changedTouches[0].clientY;
       // if (this.touchsx - this.touchex >= 50) {
-        if (store.getters.auth > 1) {
+        if (store.getters.auth > 1 & store.getters.department == 'EVK') {
           this.currentItem = index;
           this.index = index
         } else {
@@ -149,7 +191,7 @@
     
     handleClose(done) {
       let that = this
-        this.$confirm('确认关闭？')
+        this.$confirm('确认关闭？(confirm closed?)')
           .then(_ => {
             done();
           })
@@ -174,10 +216,10 @@
                      response => {
                          console.log(response.data);
                          if(response.data.status){
-                          this.$message.success('维修请求数据删除成功！')
+                          this.$message.success('报废请求数据删除成功！(Delete scrap data successfully!)')
                           this.reload()
                          }else{
-                           this.$message.error('维修请求数据删除失败！')
+                           this.$message.error('报废请求数据删除失败！(Delete scrap data failed!)')
                          }
                      }
                  ).catch(
@@ -206,10 +248,10 @@
                      response => {
                          console.log(response.data);
                          if(response.data.status){
-                          this.$message.success('报废请求数据批准成功！')
+                          this.$message.success('报废请求数据批准成功！(Approve scrap data successfully!)')
                           this.reload()
                          }else{
-                           this.$message.error('报废请求数据批准失败！')
+                           this.$message.error('报废请求数据批准失败！(Approve scrap data failed!)')
                          }
                      }
                  ).catch(
@@ -277,7 +319,7 @@
                   console.log(response.data)
                   this.queryGiveoutArr = response.data
                 }else{
-                  this.$message.error('无数据！')
+                  this.$message.error('无数据！(No data!)')
                   this.queryGiveoutArr = response.data
                 }
                   

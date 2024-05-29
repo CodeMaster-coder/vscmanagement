@@ -102,6 +102,7 @@
 
 <script>
 import XLSX from "xlsx/dist/xlsx.full.min.js"
+import store from '@/store'; // 导入 Vuex store
    
     export default {
 
@@ -147,7 +148,7 @@ import XLSX from "xlsx/dist/xlsx.full.min.js"
     modelSelect(visible) {
       // Handle model selection
       if(this.chosenName == null & visible){
-        this.$message('请先选择工具名称！')
+        this.$message('请先选择工具名称！(Please select tool name first!)')
       }
     },
     modelChange(value) {
@@ -159,13 +160,18 @@ import XLSX from "xlsx/dist/xlsx.full.min.js"
     },
     naviToRequestPage(index) {
       console.log(index)
-      this.$router.push({
+      if(store.getters.department != 'EVK'){
+        this.$message.error('你无权限！(You do not have permission!)')
+      }else{
+        this.$router.push({
         name:'toolGiveoutRequestpage',
         params:{
             RequestData:this.allMaterialStorage[index]
         }
       })
       console.log(this.allMaterialStorage[index])
+      }
+      
     },
     querymaterialnamelist(){
         //查询所有物料名称

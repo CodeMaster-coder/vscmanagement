@@ -10,7 +10,8 @@ export default new Vuex.Store({
     // 初始状态  
     isLogin:false,  
      auth:null,
-     username:null
+     username:null,
+     department:null
   },  
   mutations: {  
     // 更改状态的唯一方法  
@@ -18,13 +19,14 @@ export default new Vuex.Store({
       state.isLogin = payload.isLogin;
       state.auth = payload.auth;
       state.username = payload.username;
+      state.department = payload.department;
     },
   },  
   actions: {  
     // 提交 mutation，可以包含任意异步操作  
-    async setUserInfo({ commit }, {isLogin,auth,username}) {  
+    async setUserInfo({ commit }, {isLogin,auth,username, department}) {  
       // 这里可以添加任何你需要的逻辑，比如验证 userInfo  
-      commit('SET_USER_INFO', {isLogin,auth,username});  
+      commit('SET_USER_INFO', {isLogin,auth,username,department});  
     },  
   },  
   getters: {  
@@ -32,5 +34,6 @@ export default new Vuex.Store({
     isLogin: state => state.isLogin,  
     auth: state => state.auth,  
     username: state => state.username, 
+    department: state => state.department
   },  
 });

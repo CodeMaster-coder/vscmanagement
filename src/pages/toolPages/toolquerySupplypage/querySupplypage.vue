@@ -123,13 +123,13 @@
         :visible.sync="dialogVisible"
         width="50%"
         :before-close="handleClose">
-        <span>确定删除补库数据？</span>
+        <span>确定删除补库数据？(Confirm submit data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="delBtn(index)">确 定</el-button>
+          <el-button @click="dialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="delBtn(index)">确 定(confirm)</el-button>
         </span>
       </el-dialog>
-              <div class="querySupplypage_content" :data-id="item.id" :data-index="index" @click="dialogVisible = true">删除</div>
+              <div class="querySupplypage_content" :data-id="item.id" :data-index="index" @click="dialogVisible = true">删除-delete</div>
             </div>
           </div>
         </div>
@@ -166,7 +166,7 @@
       },
       handleClose(done) {
       let that = this
-        this.$confirm('确认关闭？')
+        this.$confirm('确认关闭？(Confirm close?)')
           .then(_ => {
             done();
           })
@@ -179,7 +179,7 @@
   
       endDateChange(e){
         if(e/1000 < this.startDate/1000){
-          this.$message.error('结束日期不能小于起始日期！')
+          this.$message.error('结束日期不能小于起始日期！(End date cannot be earlier than start date)')
           this.startDateSec=null,
           this.endDateSec=null,
           this.startDate='',
@@ -195,11 +195,11 @@
       if((this.startDateSec =='Please select startdate!' & this.endDateSec != 'Please select enddate!')|| (this.startDateSec !='Please select startdate!' & this.endDateSec == 'Please select enddate!')){
       this.startDateSec='Please select startdate!',
       this.endDateSec='Please select enddate!',
-      this.$message.error('结束时间和起始时间必须同时选择！！！')}
+      this.$message.error('结束时间和起始时间必须同时选择！！！(The end time and start time must be selected simultaneously)')}
       this.querySupply(this.chosenName,this.startDateSec,this.endDateSec)
       },
       delBtn:antiShake(function(index) {
-        if(store.getters.auth > 1){
+        if(store.getters.auth > 1 & store.getters.department == 'EVK'){
             // 处理删除事件
             this.dialogVisible = false
             this.$axios.post(
@@ -215,10 +215,10 @@
                      response => {
                          console.log(response.data);
                          if(response.data.status){
-                           this.$message.success('数据删除成功！')
+                           this.$message.success('数据删除成功！(Delete data successfully!)')
                            this.reload()
                          }else{
-                           this.$message.error('数据删除交失败，请重试！')
+                           this.$message.error('数据删除交失败，请重试！(Delete data failed, please try again!)')
                          }
                      }
                  ).catch(
@@ -227,7 +227,7 @@
                      }
                  )
         }else{
-          this.$message.error('你没有权限！')
+          this.$message.error('你没有权限！(You do not have permmison!)')
         }
         
       }),
@@ -261,7 +261,7 @@
                   if(response.data.length > 0){
                     this.querySupplyArr = response.data
                   }else{
-                    this.$message.error('无数据！')
+                    this.$message.error('无数据！(No data!)')
                   }
                     
                     })

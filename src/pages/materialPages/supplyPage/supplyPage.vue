@@ -111,10 +111,10 @@
         :visible.sync="dialogVisible"
         width="50%"
         :before-close="handleClose">
-        <span>确定提交补库数据？</span>
+        <span>确定提交补库数据？(Confirm submit data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="supplySubmitBtn">确 定</el-button>
+          <el-button @click="dialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="supplySubmitBtn">确 定(confirm)</el-button>
         </span>
       </el-dialog>
       <button class="checkBtn" @click="dialogVisible = true">提交(Submit)</button>
@@ -151,7 +151,7 @@
       modelSelect(visible) {
         // 处理耗材型号选择
         if(this.chosenName == '' & visible){
-            this.$message('请先选择耗材名称！')
+            this.$message('请先选择工具名称！(Please select tool name!)')
         }
       },
       modelChange(e) {
@@ -198,14 +198,14 @@
           giveoutNum: this.giveoutNum,
           supplyName: store.getters.username, // 从 Vuex 中获取用户信息
           supplyTime: Math.floor(Date.now() / 1000),
-          edit: '删除'
+          edit: '删除-delete'
         };
         this.supplyMaterialArr.push(supllyObj);
         this.chosenName = '';
         this.materialModel = '';
         this.giveoutNum = '';
         this.giveoutPcs = '';
-        this.$message.success('添加成功！');
+        this.$message.success('添加成功！(Added successfully!)');
       }
     },
 
@@ -265,9 +265,9 @@
                   console.log(response.data);
                   if(response.data.status){
                     this.supplyMaterialArr = []
-                    this.$message.success('补库数据提交成功！')
+                    this.$message.success('补库数据提交成功！(Supply data submit successfully！)')
                   }else{
-                    this.$message.error('补库数据提交失败，请重试！')
+                    this.$message.error('补库数据提交失败，请重试！(Supply data submit failed, please try again!)')
                   }
                   
               }
@@ -277,7 +277,7 @@
               }
           )
       }else{
-        this.$message.error("请至少添加一条补库数据！")
+        this.$message.error("请至少添加一条补库数据！(Please add at least one data!)")
       }
     }),
     resetBtn(){
@@ -285,7 +285,7 @@
     },
     handleClose(done) {
       let that = this
-        this.$confirm('确认关闭？')
+        this.$confirm('确认关闭？(Confirm closed?)')
           .then(_ => {
             done();
           })

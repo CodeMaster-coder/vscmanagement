@@ -44,6 +44,35 @@
       </div>
       <div class="toolMaintainRequestPage_input-group">
         <div class="toolMaintainRequestPage_label">
+          <div class="toolMaintainRequestPage_label1">所属区域</div>
+          <div class="toolMaintainRequestPage_label2">(Working area)</div>
+        </div>
+        <div >
+            <el-select class = 'toolMaintainRequestPage_selectbox' 
+            v-model="workingArea" 
+            @change = "workingAreaChange" 
+            filterable clearable
+            placeholder="Please select workingArea!">
+                <el-option
+                    v-for="item in allWorkingArea"
+                        :value="item">
+                </el-option>
+            </el-select>
+        </div>
+      </div>
+  
+      <div class="toolMaintainRequestPage_input-group">
+        <div class="toolMaintainRequestPage_label">
+          <div class="toolMaintainRequestPage_label1">问题描述</div>
+          <div class="toolMaintainRequestPage_label2">(Problem detail)</div>
+        </div>
+        <div class = 'toolMaintainRequestPage_selectbox' >
+          <el-input type="textarea" :rows="5" placeholder="Please enter problem detail!" v-model="problemDetail">
+          </el-input>
+        </div>
+      </div>
+      <div class="toolMaintainRequestPage_input-group">
+        <div class="toolMaintainRequestPage_label">
           <div class="toolMaintainRequestPage_label1">领用单位</div>
           <div class="toolMaintainRequestPage_label2">(Pcs)</div>
         </div>
@@ -70,10 +99,10 @@
         :visible.sync="dialogVisible"
         width="50%"
         :before-close="handleClose">
-        <span>确定提交领用请求数据？</span>
+        <span>确定提交领用请求数据？(Confirm submit data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dataInsert">确 定</el-button>
+          <el-button @click="dialogVisible = false">取 消(cancek)</el-button>
+          <el-button type="primary" @click="dataInsert">确 定(confirm)</el-button>
         </span>
       </el-dialog>
       <button class="toolMaintainRequestPage_checkBtn" @click="dialogVisible = true">提交(Submit)</button>
@@ -90,7 +119,10 @@
         RequestMaintainData: {},
         maintainNum: null,
         userName: null,  // 初始化为你的默认值
-        dialogVisible: false
+        dialogVisible: false,
+        problemDetail:null,
+        workingArea:null,
+        allWorkingArea:['手动线-Manual line','framer','自动线-Automatic line','激光房-Laser room','finish line', '机加间-Machining room']
       };
     },
     methods: {
@@ -99,57 +131,68 @@
         // console.log(e)
         console.log(this.RequestMaintainData.giveoutNum)
         if(e > parseInt(this.RequestMaintainData.giveoutNum)){
-          this.$message('申请维修数量不得大于个人库存数量！')
+          this.$message('申请维修数量不得大于个人库存数量！(Apply maintain num shonld not greater than storage num!)')
           this.maintainNum = null
         }
       },
-      dataInsert:antiShake(function() {
+      workingAreaChange(e){
+        this.workingArea = e
+      },
+    dataInsert:antiShake(function() {
         // 处理提交按钮点击的逻辑
         console.log(1)
         let that = this
         that.dialogVisible = false
-        if(this.maintainNum != null){
-                 
-                 this.$axios.post(
-                     '/electrode/login/',
-                     {
-                         demo:'maintainRequestDataInsert',
-                         toolName:that.RequestMaintainData.materialName,
-                         toolModel:that.RequestMaintainData.materialModel,
-                         toolPcs:that.RequestMaintainData.giveoutPcs,
-                         maintainNum:that.maintainNum,
-                         userName:that.userName,
-                         startTimeStamp:Math.floor(Date.now() / 1000)
-                     },
-                     {headers:{
-                         'Content-Type': 'application/json',
-                     }}
-                 ).then(
-                     response => {
-                         console.log(response.data);
-                         if(response.data.status){
-                           this.RequestMaintainData = {}
-                           this.userName = null
-                           this.maintainNum = null
-                           this.$message('数据提交成功！')
-                         }else{
-                           this.$message('数据提交失败，请重试！')
-                         }
-                     }
-                 ).catch(
-                     error => {
-                         console.log(error)
-                     }
-                 )
-                    
-               }else{
-                this.$message('请输入领用数量！')
-               }
+        if(this.maintainNum == null){
+          this.$message.error('请输入维修数量！(Please enter maintain num!)')     
+            }
+        else if(this.problemDetail == null){
+          this.$message.error('请输入问题描述！(Please enter problem detail!)') 
+        }
+        else if(this.workingArea == null){
+          this.$message.error('请选择所属区域！(Please select working area!)') 
+        }
+        else{
+         this.$axios.post(
+              '/electrode/login/',
+              {
+                  demo:'maintainRequestDataInsert',
+                  toolName:that.RequestMaintainData.materialName,
+                  toolModel:that.RequestMaintainData.materialModel,
+                  toolPcs:that.RequestMaintainData.giveoutPcs,
+                  maintainNum:that.maintainNum,
+                  problemDetail:that.problemDetail,
+                  workingArea:that.workingArea,
+                  userName:that.userName,
+                  startTimeStamp:Math.floor(Date.now() / 1000)
+              },
+              {headers:{
+                  'Content-Type': 'application/json',
+              }}
+          ).then(
+              response => {
+                  console.log(response.data);
+                  if(response.data.status){
+                    this.RequestMaintainData = {}
+                    this.userName = null
+                    this.maintainNum = null
+                    that.problemDetail = null
+                    this.$message.success('数据提交成功！(Data submit successfully!)')
+                  }else{
+                    this.$message.error('数据提交失败，请重试！(Data submit failed, please try again!)')
+                  }
+              }
+          ).catch(
+              error => {
+                  console.log(error)
+              }
+          )
+        }
       
     }),
     handleClose(done) {
       let that = this
-        this.$confirm('确认关闭？')
+        this.$confirm('确认关闭？(Confirm colsed?)')
           .then(_ => {
             done();
           })

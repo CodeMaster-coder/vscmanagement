@@ -10,22 +10,22 @@
         <div v-show="normalListVisble" class="toolUserStatus_bigtempbox">
           <div class="toolUserStatus_tempbox">
             <div class="toolUserStatus_columnbox1">
-              <div class="toolUserStatus_title">工具名称</div>
+              <div class="toolUserStatus_title">工具名称(toolName)</div>
             </div>
             <div class="toolUserStatus_columnbox2">
-              <div class="toolUserStatus_title">工具型号</div>
+              <div class="toolUserStatus_title">工具型号(type)</div>
             </div>
             <div class="toolUserStatus_columnbox3">
-              <div class="toolUserStatus_title">数量</div>
+              <div class="toolUserStatus_title">数量(num)</div>
             </div>
             <div class="toolUserStatus_columnbox4">
-              <div class="toolUserStatus_title">单位</div>
+              <div class="toolUserStatus_title">单位(unit)</div>
             </div>
             <div class="toolUserStatus_columnbox5">
-              <div class="toolUserStatus_title">领用人</div>
+              <div class="toolUserStatus_title">领用人(userName)</div>
             </div>
             <div class="toolUserStatus_columnbox6">
-              <div class="toolUserStatus_title">领用时间</div>
+              <div class="toolUserStatus_title">领用时间(giveout Time)</div>
             </div>
             <!-- <div class="toolUserStatus_columnbox7">
               <div class="toolUserStatus_title">操作</div>
@@ -53,11 +53,11 @@
                 <div class="toolUserStatus_content">{{item.selecttime}}</div>
               </div>
               <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="naviToScrapRequestPage(index)">
-                <div class="toolScrapApprovePage_content">报废</div>
+                <div class="toolScrapApprovePage_content">报废(scrap)</div>
               </div>
   
               <div class="delBtn" v-if="currentItem === index" :data-index="index" :data-id="item.id" @click="naviToRequestPage(index)">
-                <div class="toolScrapApprovePage_content">维修</div>
+                <div class="toolScrapApprovePage_content">维修(maintain)</div>
               </div>
             </div>
             
@@ -67,22 +67,22 @@
         <div v-show="maintainListVisible" class="toolUserStatus_bigtempbox">
           <div class="toolUserStatus_tempbox">
             <div class="toolUserStatus_columnbox1">
-              <div class="toolUserStatus_title">工具名称</div>
+              <div class="toolUserStatus_title">工具名称(toolName)</div>
             </div>
             <div class="toolUserStatus_columnbox2">
-              <div class="toolUserStatus_title">工具型号</div>
+              <div class="toolUserStatus_title">工具型号(type)</div>
             </div>
             <div class="toolUserStatus_columnbox3">
-              <div class="toolUserStatus_title">数量</div>
+              <div class="toolUserStatus_title">数量(num)</div>
             </div>
             <div class="toolUserStatus_columnbox4">
-              <div class="toolUserStatus_title">单位</div>
+              <div class="toolUserStatus_title">单位(unit)</div>
             </div>
             <div class="toolUserStatus_columnbox5">
-              <div class="toolUserStatus_title">领用人</div>
+              <div class="toolUserStatus_title">领用人(username)</div>
             </div>
             <div class="toolUserStatus_columnbox6">
-              <div class="toolUserStatus_title">维修开始时间</div>
+              <div class="toolUserStatus_title">维修开始时间(maintain startTime)</div>
             </div>
             <!-- <div class="toolUserStatus_columnbox7">
               <div class="toolUserStatus_title">操作</div>
@@ -131,22 +131,22 @@
         <div v-show="scrapLsitVisible" class="toolUserStatus_bigtempbox">
           <div class="toolUserStatus_tempbox">
             <div class="toolUserStatus_columnbox1">
-              <div class="toolUserStatus_title">工具名称</div>
+              <div class="toolUserStatus_title">工具名称(toolName)</div>
             </div>
             <div class="toolUserStatus_columnbox2">
-              <div class="toolUserStatus_title">工具型号</div>
+              <div class="toolUserStatus_title">工具型号(type)</div>
             </div>
             <div class="toolUserStatus_columnbox3">
-              <div class="toolUserStatus_title">数量</div>
+              <div class="toolUserStatus_title">数量(num)</div>
             </div>
             <div class="toolUserStatus_columnbox4">
-              <div class="toolUserStatus_title">领用人</div>
+              <div class="toolUserStatus_title">领用人(username)</div>
             </div>
             <div class="toolUserStatus_columnbox5">
-              <div class="toolUserStatus_title">审批人</div>
+              <div class="toolUserStatus_title">审批人(scrapApproveName)</div>
             </div>
             <div class="toolUserStatus_columnbox6">
-              <div class="toolUserStatus_title">报废时间</div>
+              <div class="toolUserStatus_title">报废时间(scrapApproveTime)</div>
             </div>
             <!-- <div class="toolUserStatus_columnbox7">
               <div class="toolUserStatus_title">操作</div>
@@ -217,7 +217,7 @@
         this.normalListVisble = false,
         this.maintainListVisible = true,
         this.scrapLsitVisible = false,
-        this.queryusertoollist('queryToolNeedMaintain', this.userName)
+        this.queryusertoollist('queryPersonalToolMaintainApproved', this.userName)
       },
       userScrapToolRequest(){
         this.normalListVisble = false,

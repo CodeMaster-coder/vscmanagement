@@ -1,20 +1,20 @@
 .wholePage{
 	height: 999999999px;
 }
-.toolScrapApprovePage_bigbox{
+.toolMaintainApprove_bigbox{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-  .toolScrapApprovePage_linebox{
+  .toolMaintainApprove_linebox{
     display: flex;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     /* justify-content: center; */
     align-items: center;
   }
-  .toolScrapApprovePage_input-group {
+  .toolMaintainApprove_input-group {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,28 +22,28 @@
     margin-bottom: 3px;
     width: 100%;
   }
-  .toolScrapApprovePage_label {
+  .toolMaintainApprove_label {
     display: flex;
     /* flex-basis: 30%; */
     width: 150px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 18px;
     color: #333333;
     margin-right: 20px;
     text-align: justify;
     /* text-align-last: justify; */
   }
-  .toolScrapApprovePage_label1{
+  .toolMaintainApprove_label1{
     width: 100%;
     text-align-last: justify;
   }
-  .toolScrapApprovePage_label2{
+  .toolMaintainApprove_label2{
     font-size: 10px;
   }
   
-  .toolScrapApprovePage_input {
+  .toolMaintainApprove_input {
     flex-basis: 40%;
     justify-content: top;
     align-self: start;
@@ -55,7 +55,7 @@
     padding: 5px;
     text-align: center;
   }
-  .toolScrapApprovePage_materialnameoptions{
+  .toolMaintainApprove_materialnameoptions{
     /* display: flex;  */
     /* position: absolute; */
     /* height: 480rpx; */
@@ -71,27 +71,27 @@
     border-radius: 20rpx;
     /* white-space:nowrap; */
   }
-  .toolScrapApprovePage_materialname{
+  .toolMaintainApprove_materialname{
     width: 100%;
     height: 40rpx;
       line-height: 40rpx;
       font-size: 13px;
   }
-  .toolScrapApprovePage{
+  .toolMaintainApprove{
     width: 150px;
   }
   
-  .toolScrapApprovePage_picker {
+  .toolMaintainApprove_picker {
     flex-basis: 40%;
     width: 130px;
       height: 20px;
       line-height: 20px;
     border: 1px solid #dddddd;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 18px;
     padding: 5px;
   }
-  .toolScrapApprovePage_picker-content1 {
+  .toolMaintainApprove_picker-content1 {
      font-size: 13px;
     
     text-align: center;
@@ -99,15 +99,15 @@
     color: #808080;
   }
   
-  .toolScrapApprovePage_picker-content {
+  .toolMaintainApprove_picker-content {
     font-size: 13px;
     color: #333333;
     text-align: center;
     line-height: 20px;
   }
-  .toolScrapApprovePage_checkBtn{
+  .toolMaintainApprove_checkBtn{
     display: flex;
-    width: 150px;
+    width: 30%;
     height: 40px;
     line-height: 40px;
     background-color: #3498db;
@@ -116,8 +116,24 @@
     border-radius: 5px;
     cursor: pointer;
     justify-content: center;
+    margin-left: 3px;
+    font-size: 18px;
   }
-  .toolScrapApprovePage_bigtempbox{
+  .toolMaintainApprove_checkBtn1{
+    display: flex;
+    width: 30%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #9fd3f6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    margin-left: 3px;
+    font-size: 18px;
+  }
+  .toolMaintainApprove_bigtempbox{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -128,7 +144,7 @@
   }
   
   
-  .toolScrapApprovePage_tempbox{
+  .toolMaintainApprove_tempbox{
     display: flex;
     flex-direction: row;
     /* margin-top: 6rpx; */
@@ -136,90 +152,94 @@
     /* border: 2px solid #dce9ee; */
     /* border-radius: 30rpx; */
   }
-  .toolScrapApprovePage_endErrorContainer{
+  .toolMaintainApprove_endErrorContainer{
       display: flex;
     flex-direction: row;
-    /* margin-top: 6rpx; */
+    margin-top: 3px;
       width: 100%;
+      border-bottom: 1px solid rgb(179, 198, 245);
   }
-  .toolScrapApprovePage_columnbox1{
+  .toolMaintainApprove_columnbox1{
     width: 20%;
     display: flex;
     flex-direction: column;
+    margin-right: 1px;
   
   }
-  .toolScrapApprovePage_columnbox2{
+  .toolMaintainApprove_columnbox2{
     width: 10%;
     display: flex;
     flex-direction: column;
-  
+    margin-right: 1px;
   }
-  .toolScrapApprovePage_columnbox3{
+  .toolMaintainApprove_columnbox3{
     width: 8%;
     display: flex;
     flex-direction: column;
-  
+    margin-right: 1px;
   }
-  .toolScrapApprovePage_columnbox4{
+  .toolMaintainApprove_columnbox4{
     width: 8%;
     display: flex;
     flex-direction: column;
-  
+    margin-right: 1px;
   }
-  .toolScrapApprovePage_columnbox5{
-    width: 8%;
+  .toolMaintainApprove_columnbox5{
+    width: 10%;
     display: flex;
     flex-direction: column;
-  
+    margin-right: 1px;
   }
-  .toolScrapApprovePage_columnbox6{
-    width: 8%;
+  .toolMaintainApprove_columnbox6{
+    width: 30%;
     display: flex;
     flex-direction: column;
-  
+    margin-right: 1px;
   }
-  .toolScrapApprovePage_columnbox7{
-    width: 8%;
-    display: flex;
-    flex-direction: column;
-  }
-  .toolScrapApprovePage_columnbox8{
-    width: 8%;
+  .toolMaintainApprove_columnbox7{
+    width: 14%;
     display: flex;
     flex-direction: column;
   
   }
-  .toolScrapApprovePage_columnbox9{
-    width: 22%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .toolScrapApprovePage_title{
-    background-color: #c7e8f7;
+  .toolMaintainApprove_title{
+    background-color: #3498db;
     width: 100%;
     height: 25px;
     line-height: 25px;
       text-align: center;
-    /* border-left: 1rpx solid white; */
-    /* border-right: 1rpx solid white; */
+    color: white;
+    font-size:15px;
+
     /* margin-top: 3rpx; */
   }
-  .toolScrapApprovePage_content{
+  .toolMaintainApprove_content{
     width: 100%;
     height: auto;
     overflow-wrap: break-word; 
     /* line-height: 50rpx; */
     align-items: center;
       text-align: center;
+      border-bottom: 1rpx solid #c7e8f7;
+      font-size:12px;
   }
-  .delBtn{
-  	width: 12.5%;
-  display: flex;
-	flex-direction: column;
-	background-color: #c2e6f7;
-	margin-left: 3px;
-	margin-right: 3px;
+  .toolMaintainApprove_delBtn{
+      display: flex;
+      /* align-items: center; */
+      justify-content: center;
+      /* height: 130rpx;
+      line-height: 130rpx; */
+      margin: 10rpx;
+      /* padding: 10rpx; */
+      width: 90rpx;
+      /* margin-right: 5rpx;
+      margin-left: 10rpx; */
+      border: 2rpx solid rgba(187, 187, 187, 100);
+      border-radius: 20rpx;
+      /* margin-top: 14rpx; */
+      background-color:  	 	#F5F5F5;
+      align-items: center;
+      
       }
       .delBtn1{
       display: none;

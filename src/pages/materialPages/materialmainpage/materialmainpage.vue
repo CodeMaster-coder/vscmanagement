@@ -105,7 +105,7 @@ page {
 .image-container {
   position: relative;
   width: 100%;
-  height: 350rpx;
+  height: 200rpx;
   /* border-bottom: 1rpx solid #1296da; */
 }
 

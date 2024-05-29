@@ -69,10 +69,10 @@
         :visible.sync="dialogVisible"
         width="50%"
         :before-close="handleClose">
-        <span>确定提交领用请求数据？</span>
+        <span>确定提交领用请求数据？(Confirm submit data?)</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dataInsert">确 定</el-button>
+          <el-button @click="dialogVisible = false">取 消(cancel)</el-button>
+          <el-button type="primary" @click="dataInsert">确 定(confirm)</el-button>
         </span>
       </el-dialog>
       <button class="checkBtn" @click="dialogVisible = true">提交(Submit)</button>
@@ -97,7 +97,7 @@
         // 处理领用数量输入的逻辑
         console.log(e)
         if(e > this.RequestData.Num){
-          this.$message('领用数量不得大于库存数量！')
+          this.$message.error('领用数量不得大于库存数量！(Apply num should not greater than storage num!)')
           this.giveoutNum = null
         }
       },
@@ -129,9 +129,9 @@
                            this.RequestData = {}
                            this.userName = null
                            this.giveoutNum = null
-                           this.$message('数据提交成功！')
+                           this.$message.success('数据提交成功！(Data submit successfully!)')
                          }else{
-                           this.$message('数据提交失败，请重试！')
+                           this.$message.error('数据提交失败，请重试！(Data submit failed, please try again!)')
                          }
                      }
                  ).catch(
@@ -141,13 +141,13 @@
                  )
                     
                }else{
-                this.$message('请输入领用数量！')
+                this.$message.error('请输入领用数量！(Please enter apply num!)')
                }
       
     }),
     handleClose(done) {
       let that = this
-        this.$confirm('确认关闭？')
+        this.$confirm('确认关闭？(Confirm closed?)')
           .then(_ => {
             done();
           })
@@ -160,6 +160,8 @@
         console.log(this.$route.params.RequestData)
         this.RequestData = this.$route.params.RequestData
         this.userName = store.getters.username;
+        this.department = store.getters.department;
+        
     }}
   </script>
   
