@@ -139,7 +139,7 @@
               </div>
               <div class="queryGiveoutpage_columnbox7">
                
-                <div class="queryGiveoutpage_content" @click="dialogVisible = true">删除-delete</div>
+                <div class="queryGiveoutpage_content" @click="authjudge">删除-delete</div>
               </div>
             </div>
             <el-dialog
@@ -220,10 +220,18 @@
       this.$message.error('结束时间和起始时间必须同时选择！！！(The end time and start time must be selected simultaneously)')}
       this.queryGiveout(this.chosenName,this.userName,this.startDateSec,this.endDateSec)
     },
+    authjudge(){
+      if(store.getters.auth > 1 & store.getters.department == 'EVK' || store.getters.auth > 10){
+        this.dialogVisible = true
+      }
+      else{
+        this.$message.error('你没有权限！(You do not have permission!)')
+      }
+    },
 
     delBtn:antiShake(function(index){
-      this.dialogVisible = false
-      if(store.getters.auth > 1 & store.getters.department == 'EVK'){
+      
+
         this.$axios.post(
                      '/electrode/login/',
                      {
@@ -248,9 +256,7 @@
                          console.log(error)
                      }
                  )
-      }else{
-        this.$message.error('你没有权限！')
-      }
+      
       
     }),
     

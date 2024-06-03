@@ -160,9 +160,7 @@ import store from '@/store'; // 导入 Vuex store
     },
     naviToRequestPage(index) {
       console.log(index)
-      if(store.getters.department != 'EVK'){
-        this.$message.error('你无权限！(You do not have permission!)')
-      }else{
+      if(store.getters.department == 'EVK' || store.getters.auth > 10){
         this.$router.push({
         name:'toolGiveoutRequestpage',
         params:{
@@ -170,6 +168,9 @@ import store from '@/store'; // 导入 Vuex store
         }
       })
       console.log(this.allMaterialStorage[index])
+        
+      }else{
+        this.$message.error('你无权限！(You do not have permission!)')
       }
       
     },

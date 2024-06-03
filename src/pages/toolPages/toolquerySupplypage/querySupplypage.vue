@@ -129,7 +129,7 @@
           <el-button type="primary" @click="delBtn(index)">确 定(confirm)</el-button>
         </span>
       </el-dialog>
-              <div class="querySupplypage_content" :data-id="item.id" :data-index="index" @click="dialogVisible = true">删除-delete</div>
+              <div class="querySupplypage_content" :data-id="item.id" :data-index="index" @click="authjudge">删除-delete</div>
             </div>
           </div>
         </div>
@@ -198,10 +198,16 @@
       this.$message.error('结束时间和起始时间必须同时选择！！！(The end time and start time must be selected simultaneously)')}
       this.querySupply(this.chosenName,this.startDateSec,this.endDateSec)
       },
+      authjudge(){
+      if(store.getters.auth > 1 & store.getters.department == 'EVK' || store.getters.auth > 10){
+        this.dialogVisible = true
+      }
+      else{
+        this.$message.error('你没有权限！(You do not have permission!)')
+      }
+    },
       delBtn:antiShake(function(index) {
-        if(store.getters.auth > 1 & store.getters.department == 'EVK'){
-            // 处理删除事件
-            this.dialogVisible = false
+
             this.$axios.post(
                      '/electrode/login/',
                      {
@@ -226,9 +232,7 @@
                          console.log(error)
                      }
                  )
-        }else{
-          this.$message.error('你没有权限！(You do not have permmison!)')
-        }
+ 
         
       }),
       querymaterialnamelist(){

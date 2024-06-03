@@ -56,7 +56,7 @@ export default {
 
   beforeRouteLeave(to,from,next){
         if(to.name == 'toolsupplyPage'){
-          if(store.getters.auth > 1 & store.getters.department == 'EVK'){
+          if(store.getters.auth > 1 & store.getters.department == 'EVK' || store.getters.auth > 10){
             next()
           }else{
             this.$message.error('你没有权限！')

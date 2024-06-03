@@ -103,7 +103,7 @@
               <div class="toolMaintainStatusUpdate_content">{{item.solution}}</div>
             </div>
             <div class="toolMaintainStatusUpdate_columnbox10">
-              <div class="toolMaintainStatusUpdate_content">{{Boolean(item.partChange)}}</div>
+              <div class="toolMaintainStatusUpdate_content">{{item.partChange == null ? item.partChange : Boolean(item.partChange)}}</div>
             </div>
             <div class="toolMaintainStatusUpdate_columnbox11">
               <div class="toolMaintainStatusUpdate_content">{{item.deadlineDate}}</div>
@@ -170,7 +170,7 @@ export default {
       // 如果需要设置其他数据，可以像上面一样直接修改
       // this.touchey = event.changedTouches[0].clientY;
       // if (this.touchsx - this.touchex >= 50) {
-        if (store.getters.auth > 1 & store.getters.department == 'EZ') {
+        if (store.getters.auth > 1 & store.getters.department == 'EZ'|| store.getters.auth > 10) {
           this.currentItem = index;
           this.index = index
         } else {

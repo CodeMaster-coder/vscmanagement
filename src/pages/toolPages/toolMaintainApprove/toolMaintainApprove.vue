@@ -420,7 +420,7 @@
         this.queryusertoollist('queryToolMaintainEVKFinished', this.userName)
       },
       touchEnd(event,index) {
-        if(store.getters.auth > 1 & store.getters.department == 'EVK'){
+        if(store.getters.auth > 1 & store.getters.department == 'EVK' || store.getters.auth > 10){
           this.currentItem = index;
           this.index = index
         }else{

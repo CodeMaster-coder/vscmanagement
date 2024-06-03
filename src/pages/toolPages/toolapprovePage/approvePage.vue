@@ -129,7 +129,7 @@
       // 如果需要设置其他数据，可以像上面一样直接修改
       // this.touchey = event.changedTouches[0].clientY;
       // if (this.touchsx - this.touchex >= 50) {
-        if (store.getters.auth > 1 & store.getters.department == 'EVK') {
+        if (store.getters.auth > 1 & store.getters.department == 'EVK' || store.getters.auth > 10) {
           this.currentItem = index;
           this.index = index
         } else {
